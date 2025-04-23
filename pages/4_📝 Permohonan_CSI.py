@@ -1,7 +1,4 @@
 import streamlit as st
-import os
-import json
-from datetime import datetime, date
 
 st.set_page_config(page_title="Borang Permohonan CSI", layout="wide")
 st.title("Borang Permohonan Program Corporate Smart Internship (CSI)")
@@ -14,14 +11,17 @@ telefon = st.text_input("No. Telefon")
 alamat = st.text_area("Alamat Syarikat")
 
 st.subheader("A. Dokumen Sokongan")
-dokumen = st.multiselect("Sila pilih dokumen yang disertakan:", [
-    "Profil Syarikat", "Carta Organisasi", "Bidang Perusahaan", "Salinan SSM",
-    "Caruman PERKESO (Borang 8A)", "Caruman KWSP (KWSP 6A)", "Sistem Insurans Pekerja (SIP)"
-])
+profil_syarikat = st.file_uploader("Muat naik Profil Syarikat", key="profil")
+carta_organisasi = st.file_uploader("Muat naik Carta Organisasi", key="carta")
+bidang_perusahaan = st.file_uploader("Muat naik Bidang Perusahaan", key="bidang")
+salinan_ssm = st.file_uploader("Muat naik Salinan SSM", key="ssm")
+caruman_perkeso = st.file_uploader("Muat naik Caruman PERKESO (Borang 8A)", key="perkeso")
+caruman_kwsp = st.file_uploader("Muat naik Caruman KWSP (KWSP 6A)", key="kwsp")
+sistem_sip = st.file_uploader("Muat naik Sistem Insurans Pekerja (SIP)", key="sip")
 
 st.subheader("B. Tawaran Syarikat")
 st.markdown("**1. Gaji yang Ditawarkan**")
-kadar_gaji = st.selectbox("Jenis Bayaran Gaji", ["Bulanan - RM1700", "Harian - RM65.38", "Jam - RM8.72"])  
+kadar_gaji = st.selectbox("Jenis Bayaran Gaji", ["Bulanan - RM1700", "Harian - RM65.38", "Jam - RM8.72"])
 bil_hari_kerja = st.radio("Bilangan Hari Bekerja dalam Seminggu", ["6 Hari", "5 Hari", "4 Hari"])
 
 st.markdown("**2. Elaun**")
