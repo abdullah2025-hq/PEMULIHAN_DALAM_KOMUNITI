@@ -56,6 +56,7 @@ def load_dummy_data():
                     "Majikan": 30 + len(daerah),
                     "Sendiri": 20 + len(daerah),
                     "Keluarga": 10 + len(daerah),
+                    "RP Jabatan": 10 + len(daerah),
                     "Tidak Bekerja": 40 + len(daerah),
                 })
     return pd.DataFrame(rows)
