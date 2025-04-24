@@ -88,7 +88,7 @@ if st.button("Hantar Borang"):
     qr_path = os.path.join(tempfile.gettempdir(), "qr_temp.png")
     qr_img.save(qr_path)
 
-    c.execute('''INSERT INTO borang_csi VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''', (
+    c.execute('''INSERT INTO borang_csi VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''', (
         timestamp, nama_syarikat, no_ssm, nama_pengurus, telefon, alamat,
         kadar_gaji, bil_hari_kerja, elaun_lembur, elaun_kehadiran, elaun_lain,
         opsyen_makan, harga_makan, jenis_penginapan, jenis_pengangkutan, jarak_kerja,
@@ -125,7 +125,8 @@ if st.button("Hantar Borang"):
         with open(pdf_path, "rb") as f:
             msg.add_attachment(f.read(), maintype='application', subtype='pdf', filename="borang_csi_qr.pdf")
 
-        with smtplib.SMTP('localhost') as smtp:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login("Abdullah_abdkodir@prison.gov.my", "KATALALUAN_APLIKASI")
             smtp.send_message(msg)
         st.success("Emel berjaya dihantar kepada jabatan!")
     except Exception as e:
